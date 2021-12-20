@@ -29,6 +29,7 @@ namespace TrainDataBase.Pages
             List<CategoryOfDriver> categories = _context.CategoryOfDriver.ToList(); //получаем список категорий водителей
             categories.Add(new CategoryOfDriver() { id=3, Title="Все категории" }); //добавляем пункт "все категории"
             categoryComboBox.ItemsSource = categories; //закидываем в комбобокс
+            categoryComboBox.SelectedIndex = 3;
         }
 
         //нажатие на кнопку "добавить" (круглый плюсик)
@@ -67,35 +68,28 @@ namespace TrainDataBase.Pages
             //получение всех записей таблицы БД
             List<Driver> list = _context.Driver.ToList();
             //получение выбранной категории
+            string searchCritery = freeExp.Text;
             CategoryOfDriver category = categoryComboBox.SelectedItem as CategoryOfDriver;
-            //если в комбобокс не пусто
-            if (category != null)
+            if (!string.IsNullOrWhiteSpace(freeExp.Text))
             {
-                //если выбрано все категории, то выбрать все записи списка
-                if (category.id == 3 )
-                    list = _context.Driver.ToList();
-                else //если выбрана конктерная категория
+                try
                 {
-                    list = list.Where(x => x.idCategory == category.id).ToList();
+                    decimal a = Convert.ToDecimal(searchCritery);
+                    list = _context.Driver.ToList().Where(x => x.troubleFreeExp >= a).ToList();
                 }
+                catch (Exception)
+                { }
+            }
+            //если в комбобокс не пусто
+            if (categoryComboBox.SelectedIndex == 3)
+            {
+            }
+            else {
+                CategoryOfDriver currCategory = categoryComboBox.SelectedItem as CategoryOfDriver;
+                list = list.Where(x => x.idCategory == currCategory.id).ToList();
             }
             //если поле для ввода критерия по безаварийному стажу пустое или заполнено пробелами
-            if (string.IsNullOrWhiteSpace(freeExp.Text))
-                list = _context.Driver.ToList(); //закинуть в список все записи
-            else //если там не пусто
-            {
-                try //попытаться преобразовать в число
-                {
-                    decimal critery = Convert.ToDecimal(freeExp.Text);
-                    //выбрать тех, у кого стаж больше критерия
-                    list = list.Where(x => x.troubleFreeExp >= critery).ToList();
-                }
-                catch (Exception) //если неправильно введено число
-                { 
-                    MessageBox.Show("Вы ввели некорректные данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                }
-            }
+           
             driverTable.ItemsSource = list; //назначить список как источник данных
         }
 
@@ -118,6 +112,11 @@ namespace TrainDataBase.Pages
             driverTable.ItemsSource = _context.Driver.ToList();
             freeExp.Text = "";
             categoryComboBox.SelectedIndex = 3; 
+        }
+
+        private void EnterCritery(object sender, TextChangedEventArgs e)
+        {
+            RefreshData();
         }
     }
 }

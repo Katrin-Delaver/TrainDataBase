@@ -30,5 +30,10 @@ namespace TrainDataBase
         {
             myFrame.Navigate(new Pages.DriverPage());
         }
+
+        private void GotoTrains(object sender, RoutedEventArgs e)
+        {
+            myFrame.Navigate(new Pages.TrainPage());
+        }
     }
 }

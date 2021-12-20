@@ -14,9 +14,9 @@
         <StackPanel Background="#6b7bf5">
             <Image Source="Resources\Logo.png" Width="200" Margin="5"/>
             <Button Content="Водители" Click="GoToDrivers"/>
-            <Button Content="Трамваи"/>
+            <Button Content="Трамваи" Click="GotoTrains"/>
             <Button Content="Рейсы"/>
         </StackPanel>
-        <Frame Grid.Column="1" x:Name="myFrame"/>
+        <Frame Grid.Column="1" x:Name="myFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

@@ -1,0 +1,40 @@
+﻿<Page x:Class="TrainDataBase.Pages.TrainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainDataBase.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TrainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Center" FontSize="27" >Трамваи</Label>
+        <StackPanel Grid.Row="1">
+            <TextBlock>Состояние трамвая:</TextBlock>
+            <ComboBox Name="stateTrainComboBox" DisplayMemberPath="Titile" Width="300" HorizontalAlignment="Left" SelectionChanged="NewCategory"/>
+        </StackPanel>
+        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" FontSize="14" Grid.Row="2" Name="trainTable">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{ Binding number}" Width="2*"/>
+                <DataGridTextColumn Header="Тип" Binding="{ Binding Type}" Width="3*"/>
+                <DataGridTextColumn Header="Состояние" Binding="{ Binding State}" Width="3*"/>
+                <DataGridTextColumn Header="Срок эксплуатации" Binding="{ Binding timeWork}" Width="3*"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Редактировать" Click="EditTrain"/>
+                    <MenuItem Header="Удалить" Click="DeleteTrain"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <Button Click="AddTrain" Style="{DynamicResource RoundedButtonStyle}" Grid.Row="3" HorizontalAlignment="Right" Content="+" FontSize="25" FontFamily="Comic Sans MS" VerticalContentAlignment="Top" Width="50"/>
+        
+    </Grid>
+</Page>

@@ -79,6 +79,12 @@
     <Compile Include="Pages\AddDriver.xaml.cs">
       <DependentUpon>AddDriver.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddTrainPage.xaml.cs">
+      <DependentUpon>AddTrainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TrainPage.xaml.cs">
+      <DependentUpon>TrainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Passage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -113,7 +119,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddTrainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\DriverPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TrainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
