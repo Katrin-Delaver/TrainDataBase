@@ -35,5 +35,22 @@ namespace TrainDataBase
         {
             myFrame.Navigate(new Pages.TrainPage());
         }
+
+        private void GotoPassage(object sender, RoutedEventArgs e)
+        {
+            myFrame.Navigate(new Pages.PassagePage());
+        }
+
+        private void GotoRoutes(object sender, RoutedEventArgs e)
+        {
+
+            myFrame.Navigate(new Pages.RoutesPage());
+        }
+
+        private void GotoQuery(object sender, RoutedEventArgs e)
+        {
+            myFrame.Navigate(new Pages.QueryThreeTables());
+
+        }
     }
 }

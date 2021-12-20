@@ -21,7 +21,11 @@ namespace TrainDataBase
         public System.DateTime date { get; set; }
         public System.TimeSpan timeStart { get; set; }
         public System.TimeSpan timeFinish { get; set; }
-    
+
+        public string driverName { get { return Driver.name; } }
+        public string ShortDate { get { return date.ToShortDateString(); } }
+        
+
         public virtual Driver Driver { get; set; }
         public virtual Route Route { get; set; }
         public virtual Train Train { get; set; }

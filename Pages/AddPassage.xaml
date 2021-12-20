@@ -1,0 +1,51 @@
+﻿<Page x:Class="TrainDataBase.Pages.AddPassage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainDataBase.Pages"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddPassage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Label Name="header" Content="Добавить рейс" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="20" FontStyle="Italic" FontFamily="Comic Sans MS"/>
+        <Label Content="Номер рейса" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" FontSize="18" FontStyle="Italic" FontFamily="Comic Sans MS" Margin="5"/>
+        <TextBox Name="numBox" Grid.Row="2" Grid.Column="1" Width="300" HorizontalAlignment="Left"/>
+        <Label Content="Табельный номер водителя" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Center" FontSize="18" FontStyle="Italic" FontFamily="Comic Sans MS" Margin="5"/>
+        <ComboBox Name="driverBox" DisplayMemberPath="tabNum" Grid.Row="3" Grid.Column="1" Width="300" HorizontalAlignment="Left"/>
+        <Label Content="Номер вагона" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Center" FontSize="18" FontStyle="Italic" FontFamily="Comic Sans MS" Margin="5"/>
+        <ComboBox Name="TrainBox" DisplayMemberPath="number"  Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left"   Width="300"/>
+        <Label Content="Номер маршрута" HorizontalAlignment="Right" Grid.Row="5" VerticalAlignment="Center" FontSize="18" FontStyle="Italic" FontFamily="Comic Sans MS" Margin="5"/>
+        <ComboBox Name="RouteBox" DisplayMemberPath="number"  Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left"   Width="300"/>
+    
+        <Label Content="Дата рейса" Name="categLable" HorizontalAlignment="Right" Grid.Row="6" VerticalAlignment="Center" FontSize="18" FontStyle="Italic" FontFamily="Comic Sans MS" Margin="5"/>
+        <DatePicker FontSize="16" VerticalAlignment="Center" Name="timeWorkBox"  Grid.Row="6" Grid.Column="1" Width="300" HorizontalAlignment="Left"/>
+        <Label Content="Время начала"  HorizontalAlignment="Right" Grid.Row="7" VerticalAlignment="Center" FontSize="18" FontStyle="Italic" FontFamily="Comic Sans MS" Margin="5"/>
+        <xctk:MaskedTextBox Name="startTimeBox" Grid.Row="7" Grid.Column="1" Width="300" HorizontalAlignment="Left" Margin="5" FontSize="16" Mask="00:00" />
+        <Label Content="Время окончания"  HorizontalAlignment="Right" Grid.Row="8" VerticalAlignment="Center" FontSize="18" FontStyle="Italic" FontFamily="Comic Sans MS" Margin="5"/>
+        <xctk:MaskedTextBox Name="finishTimeBox" Grid.Row="8" Grid.Column="1" Width="300" HorizontalAlignment="Left" Margin="5" FontSize="16" Mask="00:00" />
+
+        <Button Content="Добавить" Grid.Row="10" Grid.ColumnSpan="2" Width="200" Name="buttonAdd"/>
+        <Button Content="Назад" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Right" Click="Cancel"/>
+    </Grid>
+</Page>

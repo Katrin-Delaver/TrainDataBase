@@ -15,7 +15,9 @@
             <Image Source="Resources\Logo.png" Width="200" Margin="5"/>
             <Button Content="Водители" Click="GoToDrivers"/>
             <Button Content="Трамваи" Click="GotoTrains"/>
-            <Button Content="Рейсы"/>
+            <Button Content="Рейсы" Click="GotoPassage"/>
+            <Button Content="Маршруты" Click="GotoRoutes"/>
+            <Button Content="Общие даныне" Click="GotoQuery"/>
         </StackPanel>
         <Frame Grid.Column="1" x:Name="myFrame" NavigationUIVisibility="Hidden"/>
     </Grid>

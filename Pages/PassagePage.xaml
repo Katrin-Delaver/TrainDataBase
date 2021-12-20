@@ -1,0 +1,53 @@
+﻿<Page x:Class="TrainDataBase.Pages.PassagePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainDataBase.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RoutePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Center" FontSize="27" >Рейсы</Label>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock>Водитель</TextBlock>
+                <TextBox Name="driverBox" Width="200" TextChanged="EnterDriver"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock>Вагон</TextBlock>
+                <ComboBox Name="trainComboBox" Width="200" HorizontalAlignment="Left" SelectionChanged="ChangeTrain" FontSize="12"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock>Маршрут</TextBlock>
+                <ComboBox Name="routeComboBox" Width="200" HorizontalAlignment="Left" FontSize="12" SelectionChanged="ChangeRoute"/>
+            </StackPanel>
+        </StackPanel>
+        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" FontSize="14" Grid.Row="2" Name="passageTable">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{ Binding number}" Width="*"/>
+                <DataGridTextColumn Header="Водитель" Binding="{ Binding driverName}" Width="3*"/>
+                <DataGridTextColumn Header="Вагон" Binding="{ Binding numberTrain}" Width="3*"/>
+                <DataGridTextColumn Header="Маршрут" Binding="{ Binding numberRoute}" Width="3*"/>
+                <DataGridTextColumn Header="Дата" Binding="{ Binding ShortDate}" Width="3*"/>
+                <DataGridTextColumn Header="Время начала" Binding="{ Binding timeStart}" Width="3*"/>
+                <DataGridTextColumn Header="Время окончания" Binding="{ Binding timeFinish}" Width="3*"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Редактировать" Click="EditPassage"/>
+                    <MenuItem Header="Удалить" Click="DeletePassage"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <Button Click="AddPassage" Style="{DynamicResource RoundedButtonStyle}" Grid.Row="3" HorizontalAlignment="Right" Content="+" FontSize="25" FontFamily="Comic Sans MS" VerticalContentAlignment="Top" Width="50"/>
+
+    </Grid>
+</Page>

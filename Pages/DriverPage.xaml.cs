@@ -81,7 +81,7 @@ namespace TrainDataBase.Pages
                 { }
             }
             //если в комбобокс не пусто
-            if (categoryComboBox.SelectedIndex == 3)
+            if (categoryComboBox.SelectedIndex == 2)
             {
             }
             else {

@@ -1,0 +1,32 @@
+﻿<Page x:Class="TrainDataBase.Pages.QueryThreeTables"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainDataBase.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="QueryThreeTables">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>            
+            <RowDefinition Height="*"/>
+            
+        </Grid.RowDefinitions>
+        <Label Content="Общие данные" FontSize="25" HorizontalAlignment="Center" FontStyle="Italic" />
+        
+        <DataGrid IsReadOnly="true" SelectionMode="Single" x:Name="finalTable" Grid.Row="1" AutoGenerateColumns="False" FontSize="14">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="2*" Header="Водитель" Binding="{Binding name}" FontSize="14"/>
+                <DataGridTextColumn Width="*" Header="Маршрут" Binding="{Binding route}" FontSize="14"/>
+                <DataGridTextColumn  Width="*" Header="Вагон" Binding="{Binding train}" FontSize="14"/>
+                <DataGridTextColumn Width="2*" Header="Дата" Binding="{Binding date}" FontSize="14"/>
+                <DataGridTextColumn Width="2*" Header="Длина маршрута" Binding="{Binding len}" FontSize="14"/>
+                <DataGridTextColumn Width="2*" Header="Тип вагона" Binding="{Binding type}" FontSize="14"/>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        
+        
+    </Grid>
+</Page>
