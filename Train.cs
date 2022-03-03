@@ -19,15 +19,13 @@ namespace TrainDataBase
         {
             this.Passage = new HashSet<Passage>();
         }
-    
+        public string State { get { return StateTrain.Titile; } }
+        public string Type { get { return TypeTrain.Title; } }
         public int number { get; set; }
         public int typeId { get; set; }
         public int stateID { get; set; }
         public int timeWork { get; set; }
-
-        public string State { get { return StateTrain.Titile; } }
-        public string Type { get { return TypeTrain.Title; } }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Passage> Passage { get; set; }
         public virtual StateTrain StateTrain { get; set; }

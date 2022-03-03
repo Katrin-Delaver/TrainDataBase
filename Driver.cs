@@ -19,20 +19,19 @@ namespace TrainDataBase
         {
             this.Passage = new HashSet<Passage>();
         }
-    
-        public int tabNum { get; set; }
-        public string name { get; set; }
-        public System.DateTime dateOfStartWork { get; set; }
-        public int idCategory { get; set; }
-        public decimal troubleFreeExp { get; set; }
-        public string categoryName { get
+        public string categoryName
+        {
+            get
             {
                 if (this != null)
                     return this.CategoryOfDriver.Title;
                 else return "";
-            } }
+            }
+        }
 
-        public string Experiense { get
+        public string Experiense
+        {
+            get
             {
                 int days = (DateTime.Now - dateOfStartWork).Days;
                 int years = days / 30 / 12;
@@ -41,8 +40,16 @@ namespace TrainDataBase
                     return years + " лет";
                 else
                     return years + " лет " + month + " мес.";
-            } }
+            }
+        }
+        public int tabNum { get; set; }
+        public string name { get; set; }
+        public System.DateTime dateOfStartWork { get; set; }
+        public int idCategory { get; set; }
+        public decimal troubleFreeExp { get; set; }
+    
         public virtual CategoryOfDriver CategoryOfDriver { get; set; }
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Passage> Passage { get; set; }
     }

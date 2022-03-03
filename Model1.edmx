@@ -76,6 +76,14 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="tabNum" />
+          </Key>
+          <Property Name="tabNum" Type="int" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Driver_CategoryOfDriver">
           <End Role="CategoryOfDriver" Type="Self.CategoryOfDriver" Multiplicity="1" />
           <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
@@ -88,8 +96,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Driver_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="tabNum" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="tabNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Passage_Driver">
-          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Passage" Type="Self.Passage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Driver">
@@ -157,8 +179,13 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Train" EntityType="Self.Train" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeTrain" EntityType="Self.TypeTrain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Driver_CategoryOfDriver" Association="Self.FK_Driver_CategoryOfDriver">
             <End Role="CategoryOfDriver" EntitySet="CategoryOfDriver" />
+            <End Role="Driver" EntitySet="Driver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Driver_User" Association="Self.FK_Driver_User">
+            <End Role="User" EntitySet="User" />
             <End Role="Driver" EntitySet="Driver" />
           </AssociationSet>
           <AssociationSet Name="FK_Passage_Driver" Association="Self.FK_Passage_Driver">
@@ -205,6 +232,7 @@
           <Property Name="idCategory" Type="Int32" Nullable="false" />
           <Property Name="troubleFreeExp" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <NavigationProperty Name="CategoryOfDriver" Relationship="Self.FK_Driver_CategoryOfDriver" FromRole="Driver" ToRole="CategoryOfDriver" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Driver_User" FromRole="Driver" ToRole="User" />
           <NavigationProperty Name="Passage" Relationship="Self.FK_Passage_Driver" FromRole="Driver" ToRole="Passage" />
         </EntityType>
         <EntityType Name="Passage">
@@ -270,6 +298,15 @@
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Train" Relationship="Self.FK_Train_TypeTrain" FromRole="TypeTrain" ToRole="Train" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="tabNum" />
+          </Key>
+          <Property Name="tabNum" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK_Driver_User" FromRole="User" ToRole="Driver" />
+        </EntityType>
         <Association Name="FK_Driver_CategoryOfDriver">
           <End Role="CategoryOfDriver" Type="Self.CategoryOfDriver" Multiplicity="1" />
           <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
@@ -282,8 +319,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Driver_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="tabNum" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="tabNum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Passage_Driver">
-          <End Role="Driver" Type="Self.Driver" Multiplicity="1" >
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Passage" Type="Self.Passage" Multiplicity="*" />
@@ -353,8 +402,13 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Train" EntityType="Self.Train" />
           <EntitySet Name="TypeTrain" EntityType="Self.TypeTrain" />
+          <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK_Driver_CategoryOfDriver" Association="Self.FK_Driver_CategoryOfDriver">
             <End Role="CategoryOfDriver" EntitySet="CategoryOfDriver" />
+            <End Role="Driver" EntitySet="Driver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Driver_User" Association="Self.FK_Driver_User">
+            <End Role="User" EntitySet="User" />
             <End Role="Driver" EntitySet="Driver" />
           </AssociationSet>
           <AssociationSet Name="FK_Passage_Driver" Association="Self.FK_Passage_Driver">
@@ -460,6 +514,15 @@
               <MappingFragment StoreEntitySet="TypeTrain">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="TrainModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="tabNum" ColumnName="tabNum" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

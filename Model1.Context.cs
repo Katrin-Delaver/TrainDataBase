@@ -33,5 +33,6 @@ namespace TrainDataBase
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Train> Train { get; set; }
         public virtual DbSet<TypeTrain> TypeTrain { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

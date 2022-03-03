@@ -12,19 +12,12 @@ namespace TrainDataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Passage
+    public partial class User
     {
-        public int number { get; set; }
-        public int idDriver { get; set; }
-        public int numberRoute { get; set; }
-        public int numberTrain { get; set; }
-        public System.DateTime date { get; set; }
-        public System.TimeSpan timeStart { get; set; }
-        public System.TimeSpan timeFinish { get; set; }
-        public string driverName { get { return Driver.name; } }
-        public string ShortDate { get { return date.ToShortDateString(); } }
+        public int tabNum { get; set; }
+        public string password { get; set; }
+        public string FIO { get; set; }
+    
         public virtual Driver Driver { get; set; }
-        public virtual Route Route { get; set; }
-        public virtual Train Train { get; set; }
     }
 }

@@ -1,0 +1,31 @@
+﻿<Window x:Class="TrainDataBase.Autorise"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrainDataBase"
+        mc:Ignorable="d"
+        Title="Autorise" Height="550" Width="800" KeyDown="EnterDown">    
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Label Margin="0">Выберите табельный номер</Label>
+            <ComboBox DisplayMemberPath="tabNum" Name="tabBox" FontSize="10" Margin="5"/>
+            <Label Margin="0">Введите пароль</Label>
+            <PasswordBox Name="passBox" FontSize="20" Margin="5" KeyDown="EnterDown"></PasswordBox>
+            <Button Click="EnterClick" Margin="5" Width="150" Background="#6b7bf5" Foreground="White">Вход</Button>
+        </StackPanel>
+        <Image Source="/Resources/Logo.png" />
+
+    </Grid>
+</Window>
