@@ -39,7 +39,7 @@ namespace TrainDataBase
             if (user.password.Equals(pas)) //если пароль совпадает с паролем пользователя
             {
                 MessageBox.Show("Авторизация успешна!", "Авторизация", MessageBoxButton.OK, MessageBoxImage.Information);
-                MainWindow main = new MainWindow(); //создаем основное окно
+                MainWindow main = new MainWindow(user); //создаем основное окно
                 main.Show(); //открываем окно
                 main.Closed += WindowClosed;//Создаем функцию, которая среагирует, если MainWindow закроется      
                 this.Hide(); //скрываем окно авторизации

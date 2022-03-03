@@ -20,9 +20,11 @@ namespace TrainDataBase
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(User user)
         {
             InitializeComponent();
+            //Здесь должно быть скрытие кнопок
+
             myFrame.Navigate(new Pages.DriverPage()); 
         }
         //changes in repository
